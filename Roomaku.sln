@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roomaku", "Roomaku\Roomaku.csproj", "{2882C74C-F863-4E2E-ADF8-3B1ABB8822AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roomaku.Tests", "Roomaku.Tests\Roomaku.Tests.csproj", "{7E222EA2-5FF0-4376-9ECF-2531A9C6CFF7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2882C74C-F863-4E2E-ADF8-3B1ABB8822AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2882C74C-F863-4E2E-ADF8-3B1ABB8822AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2882C74C-F863-4E2E-ADF8-3B1ABB8822AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2882C74C-F863-4E2E-ADF8-3B1ABB8822AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E222EA2-5FF0-4376-9ECF-2531A9C6CFF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E222EA2-5FF0-4376-9ECF-2531A9C6CFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E222EA2-5FF0-4376-9ECF-2531A9C6CFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E222EA2-5FF0-4376-9ECF-2531A9C6CFF7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
