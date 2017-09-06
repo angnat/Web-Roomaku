@@ -11,6 +11,8 @@ using System.Web.Http.ModelBinding;
 using System.Web.Http.OData;
 using System.Web.Http.OData.Routing;
 using RoomakuRepository;
+using System.Net.Mail;
+
 
 namespace Roomaku.Controllers
 {
@@ -86,12 +88,14 @@ namespace Roomaku.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            
             db.tblT_Roomaku.Add(tblT_Roomaku);
 
             try
             {
                 db.SaveChanges();
+                //send mail
+                sendMail(tblT_Roomaku);
             }
             catch (DbUpdateException)
             {
@@ -106,6 +110,16 @@ namespace Roomaku.Controllers
             }
 
             return Created(tblT_Roomaku);
+        }
+
+        private void sendMail(tblT_Roomaku tbl)
+        {
+            var client = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("roomaku.official@gmail.com", "Arsitektur19"),
+                EnableSsl = true
+            };
+            client.Send("angnat05@gmail.com", "angnat05@gmail.com", "Pesanan Barang", "testbody");
         }
 
         // PATCH: odata/tblT_RoomakuOData(5)
