@@ -1,0 +1,59 @@
+﻿.modal { 
+    overflow: auto !important;
+}
+
+.modal-header {
+    padding: 5px 15px !important;
+}
+
+.modal-title {
+    font-weight: 700 !important;
+}
+
+.modal-body {
+    padding: 5px 15px !important;
+}
+
+.form-group {
+    margin-bottom: 5px !important;
+}
+
+fieldset {
+    margin-bottom: 20px !important;
+}
+
+legend {
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+    font-weight: 600 !important;
+}
+
+label, .input-sm {
+    font-weight: 400 !important;
+    font-size: 14px;
+}
+
+.nav-tabs a {
+    font-weight: 600;
+}
+
+#navbar-collapse ul.dropdown-menu {
+    -moz-box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: none;
+}
+
+.dataTable td {
+    padding: 3px 8px !important;
+    vertical-align: middle !important;
+}
+
+.bootstrap-datetimepicker-widget {
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}

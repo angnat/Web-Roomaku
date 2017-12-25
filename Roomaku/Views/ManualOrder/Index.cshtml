@@ -1,0 +1,176 @@
+﻿@using CaptchaMvc.HtmlHelpers  
+@using RoomakuRepository
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section Script_Page {
+    <script src="@Url.Content("~/Scripts/DetailRequest.js")"></script>
+}
+
+
+<div class="content-wrapper">
+    <div class="container" style="margin-top:0px">
+        <section class="content-header" style="margin-top:0px; padding-top:0px">
+            <div style="margin-top:0px; font-size:26px; font-weight:bold">
+                <h1 style="font-size:26px;font-weight:bold"></h1>
+            </div>
+        </section>
+        <input type="hidden" id="MAPFILE_GROUP_ID" name="MAPFILE_GROUP_ID" />
+
+
+        <div class="container">
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+                    <div id="wid-id-0">
+                        <header role="heading">
+                            <h2>Detil Permintaan </h2> <label id="ID" class="label" name="ID" />
+                        </header>
+
+                        <div role="content">
+                            <!-- widget content -->
+                            <div class="widget-body">
+                                <div class="row">
+                                    <form id="wizard-1" novalidate="novalidate" method="post">
+                                        <div id="bootstrap-wizard-1" class="col-sm-12">
+                                            <div class="form-bootstrapWizard">
+                                                <ul class="bootstrapWizard form-wizard">
+                                                    <li class="" data-target="#step1" id="step1">
+                                                        <a href="#tab1" data-toggle="tab" class="active"> <span class="step">1</span> <span class="title">Isi Kebutuhan Material Anda pada form dibawah ini dan Klik Submit</span></a>
+                                                    </li>
+                                                    <li data-target="#step2" class="" id="step2">
+                                                        <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Tunggu email kami 1x24 jam</span> </a>
+                                                    </li>
+                                                    <li data-target="#step3" id="step3">
+                                                        <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Terima Email penawaran dari kami</span> </a>
+                                                    </li>
+                                                    <li data-target="#step4" id="step4">
+                                                        <a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Pilih yang terbaik dan balas email dari tim kami</span> </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab1">
+                                                    <br>
+                                                    <h3><strong>Step 1 </strong> - Isi Data dan isi Kebutuhan Material</h3>
+                                                    <br/>
+                                                    <div class="form-actions">
+                                                        <div class="row">                                                            
+                                                                <div class="form-group">
+                                                                    <table class="table table-striped">
+                                                                        <tr>
+                                                                            <th style="float: left;">Material yang dibutuhkan</th>
+                                                                            <td>
+                                                                                @Html.TextArea("MATERIAL", null, htmlAttributes: new { @placeholder = "Masukan Material yang anda perlukan", @id = "txtMaterial", @class = "form-control", @name = "Material" , required = "required" })                                                                                                                                                               
+                                                                                @*<textarea required="required" class="form-control" id="txtMaterial" name="Material" placeholder="Masukan Material yang diperlukan"></textarea>*@
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="float: left;">Nama</th>
+                                                                            <td>
+                                                                                @Html.TextBox("NAMA", null, htmlAttributes: new { @placeholder = "Masukan Nama Anda", @id = "txtNama", @class = "form-control", @name = "Nama" , required = "required" })
+                                                                                @*<input type="text" required="required" class="form-control" name="Lokasi" id="txtLokasi" placeholder="Masukan Lokasi">*@
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="float: left;">Lokasi</th>
+                                                                            <td>
+                                                                                @Html.TextBox("LOKASI", null, htmlAttributes: new { @placeholder = "Masukan Lokasi", @id="txtLokasi" , @class="form-control", @name="Lokasi" , required = "required" })                                                                                
+                                                                                @*<input type="text" required="required" class="form-control" name="Lokasi" id="txtLokasi" placeholder="Masukan Lokasi">*@
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="float: left;">Telp</th>
+                                                                            <td>
+                                                                                @Html.TextBox("TELP", null, htmlAttributes: new { @placeholder = "Masukan Telp", @id = "txtTelp", @class = "form-control", @name = "Telp" , required = "required" })
+                                                                                
+                                                                                @*<input type="text" required="required" class="form-control" name="Telp" id="txtTelp" placeholder="Masukan Telp yg dapat dihubungi">*@
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th style="float: left;">Email</th>
+                                                                            <td>
+                                                                                @Html.TextBox("EMAIL", null, htmlAttributes: new { @placeholder = "Masukan Email anda", @id = "txtEmail", @class = "form-control", @name = "Email" })
+                                                                                @*<input type="text" required="required" class="form-control" name="Email" id="txtEmail" placeholder="Masukan Email anda">*@
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                @Html.Captcha(4)
+                                                                            </td>
+                                                                            <td>
+                                                                                <p> @ViewBag.ErrorMessage </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+
+                                                                    <div class="col-sm-12">
+                                                                        <ul class="pager wizard no-margin">
+                                                                            <li class="next">
+                                                                                @*<a href="#" class="btn btn-lg txt-color-darken" id="btnSave" name="btnSave" onclick="submitForm()"> Save </a>*@
+                                                                                @using (Html.BeginForm("SubmitRequest", "ManualOrder", FormMethod.Post))
+                                                                                {
+                                                                                <input type="submit" value="Send" />
+                                                                                }
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="tab2">
+                                                    <br>
+                                                    <h3><strong>Step 2</strong> - Konfirmasi Ketersediaan Material</h3>
+                                                    <br/>
+                                                    <div class="form-actions">
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <article>Kami akan mencarikan Material terbaik untuk Anda, tunggu email dari team kami 1x24 jam</article>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="tab3">
+                                                    <br>
+                                                    <h3><strong>Step 3</strong> - Terima Email Penawaran dari kami</h3>
+                                                    <br/>
+                                                    <div class="form-actions">
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <p>  Kami akan menyeleksi dan mengirimkan email penawaran terbaik kepada anda</p>
+                                                            </div>                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="tab4">
+                                                    <br>
+                                                    <h3><strong>Step 4</strong> - Pilih yang terbaik dari yang terbaik</h3>
+                                                    <br />
+                                                    <div class="form-actions">
+                                                        <div class="row">
+                                                            <div class="form-group">
+                                                                <article>Setelah memilih yang terbaik silahkan reply atau hubungi kami kembali</article>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end widget content -->
+
+                    </div>
+                </article>
+            </div>  
+        </div>
+    </div>
+</div>

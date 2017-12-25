@@ -7,6 +7,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Roomaku;
 using Roomaku.Controllers;
 
+namespace Roomaku.Controllers.Tests
+{
+    [TestClass()]
+    public class HomeControllerTest
+    {
+        [TestMethod()]
+        public void sendMailNotificationTest()
+        {
+            Assert.Fail();
+        }
+    }
+}
+
 namespace Roomaku.Tests.Controllers
 {
     [TestClass]

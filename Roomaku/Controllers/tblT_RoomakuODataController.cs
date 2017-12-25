@@ -12,7 +12,8 @@ using System.Web.Http.OData;
 using System.Web.Http.OData.Routing;
 using RoomakuRepository;
 using System.Net.Mail;
-
+using CaptchaMvc.Models;
+using CaptchaMvc.HtmlHelpers;
 
 namespace Roomaku.Controllers
 {
@@ -87,15 +88,14 @@ namespace Roomaku.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
+            }            
             
             db.tblT_Roomaku.Add(tblT_Roomaku);
 
             try
             {
                 db.SaveChanges();
-                //send mail
-                sendMail(tblT_Roomaku);
+                sendMailNotification(tblT_Roomaku);                
             }
             catch (DbUpdateException)
             {
@@ -112,14 +112,56 @@ namespace Roomaku.Controllers
             return Created(tblT_Roomaku);
         }
 
-        private void sendMail(tblT_Roomaku tbl)
+       
+
+        public void sendMailHtml( String ToAddr, String MailSubject, String MailBody)
         {
-            var client = new SmtpClient("smtp.gmail.com", 587)
+           MailMessage mailMessage = new MailMessage();
+           mailMessage.From = new MailAddress("sales@roomaku.id");
+           String[] ToList = ToAddr.Split(',');
+           foreach(String toMail in ToList)
+           {
+                mailMessage.To.Add(new MailAddress(toMail));
+           }
+
+            //Text/HTML
+            mailMessage.IsBodyHtml = true;
+
+            //Set the subjet and body text
+            mailMessage.Subject = MailSubject;
+            mailMessage.Body = MailBody;
+
+            //SmtpClient smtpClient = new SmtpClient();
+            //smtpClient.Send(mailMessage);
+
+            using (var smtp = new SmtpClient())
             {
-                Credentials = new NetworkCredential("roomaku.official@gmail.com", "Arsitektur19"),
-                EnableSsl = true
-            };
-            client.Send("angnat05@gmail.com", "angnat05@gmail.com", "Pesanan Barang", "testbody");
+                var credential = new NetworkCredential
+                {
+                    UserName = "sales@roomaku.id",  // replace with valid value
+                    Password = "password.1"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "mail.roomaku.id";
+                smtp.Port = 587;
+                smtp.EnableSsl = false;
+                smtp.Send(mailMessage);                
+            }
+
+        }
+
+        public void sendMailNotification(tblT_Roomaku item)
+        {
+            String email = "angnat05@yahoo.com,arielsk@roomaku.id,parhan@roomaku.id";
+            String isiemail = "<html><head><title></title>";
+            isiemail += "<style>body {color:#000000; font-family:Callibri,arial,verdana; font-size:14px; text-align:left;}</style>";
+            isiemail += "</head><body style='text-align:justify'>";
+            isiemail += "Terdapat Request Pemesanan Material : " + item.Material + " <br> ";
+            isiemail += "Oleh : " + item.Nama + " <br> ";
+            isiemail += "Lokasi : " + item.Lokasi + " <br> ";
+            isiemail += "Telp : " + item.Telp + " <br> ";
+            isiemail += "</body></html>";
+            this.sendMailHtml(email, "Pemesanan Material", isiemail);
         }
 
         // PATCH: odata/tblT_RoomakuOData(5)
