@@ -2,27 +2,6 @@
     ViewBag.Title = "Home Page";    
 }
 
-@*<div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </div>*@
 
 <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
 <nav id="sidebar-wrapper">
@@ -44,7 +23,7 @@
             <a href="#portfolio" onclick=$("#menu-close").click();>Portfolio</a>
         </li>
         <li>
-            <a href="#material" onclick=$("#menu-close").click();>Material</a>
+            <a href="#material" onclick=findMaterial();>Material</a>
         </li>
         <li>
             <a href="#register" onclick=$("#menu-close").click();>Register</a>
@@ -70,8 +49,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>Helps you build your dream home!</h2>
-                <p class="lead">You can buy house but not home</p>
+                <h2>Tentang Roomaku</h2>
+                <p class="lead">Banyak orang yang tidak memiliki waktu untuk mencari tukang, membandingkan harga di toko material dan berkonsultasi dengan tenaga yang ahli dibidangnya. Roomaku adalah platform yang memudahkan orang untuk merenovasi atau membangun rumah mereka. Biarkan kami membantu anda membangun rumah idaman anda</p>
+                
             </div>
         </div>
         <!-- /.row -->
@@ -98,7 +78,8 @@
                                 <strong>Material</strong>
                             </h4>
                             <p>Mencari Material</p>
-                            <a href="#material" class="btn btn-light" onclick=$("#menu-close").click();>Request</a>
+                            <a href="#material" class="btn btn-light" onclick=findMaterial();>Request</a>
+                            @*$("#menu-close").click();*@
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">
@@ -216,7 +197,7 @@
             </div>
         </div>
     </aside>*@
-<section id="material" class="material">
+@*<section id="material" class="material">
     <aside class="call-to-action bg-primary">
         <div class="container">
             <div class="row">                
@@ -235,7 +216,7 @@
                     <div class="form-group">
                         <a href="#register" onclick=$("#menu-close").click(); class="btn btn-lg btn-light">Lanjut</a>
                     </div>
-                    @*<a href="#" class="btn btn-lg btn-dark">Look at Me!</a>*@
+                    
                 </div>
             </div>                       
         </div>
@@ -292,7 +273,8 @@
             </div>
         </div>
     </aside>
-</section>
+</section>*@
+
     <br/>
     <br/>
     <br/>
@@ -453,6 +435,10 @@
 
         function onClickSubmit() {
             $("lblMaterial").text($('#txtMaterial').val());
+        }
+
+        function findMaterial() {
+            window.location.href = base_url + "ManualOrder/Index";   
         }
 
         function submitForm() {
